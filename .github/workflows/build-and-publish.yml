@@ -23,9 +23,7 @@ jobs:
           fi
 
       - name: Install uv
-        uses: astral-sh/setup-uv@v6
-        with:
-          enable-cache: true
+        run: curl -LsSf https://astral.sh/uv/install.sh | sh
 
       - name: Set up Python
         uses: actions/setup-python@v5
