@@ -1,6 +1,6 @@
 [project]
 name = "cancer-prediction-fy290"
-version = "0.1.14"
+version = "0.1.15"
 description = "A basic model to predict cancerous tumors based on certain properties."
 authors = [{name = "Harry Potter"}]
 requires-python = ">=3.11"
