@@ -1,7 +1,5 @@
 import os
-import pickle
 
-import numpy as np
 import pandas as pd
 import streamlit as st
 from cancer_prediction.cancer_model import CancerModel
@@ -23,7 +21,7 @@ def load_model(path="cancer_model.pkl"):
     return model
 
 
-def train_and_save_model(train_data, filename = "cancer_model.pkl"):
+def train_and_save_model(train_data, filename="cancer_model.pkl"):
     model = CancerModel()
     filename = os.path.join(MODELS_DIR, filename)
     X = train_data.drop("target", axis=1)
@@ -50,7 +48,8 @@ app_mode = st.sidebar.selectbox(
 
 if app_mode == "Home":
     st.write(
-        "Welcome to the Cancer Diagnosis Prediction Application. Use the sidebar to navigate through the application."
+        "Welcome to the Cancer Diagnosis Prediction Application."
+        "Use the sidebar to navigate through the application."
     )
 
 elif app_mode == "Train a new model":

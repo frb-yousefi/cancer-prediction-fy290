@@ -1,7 +1,6 @@
-from pathlib import Path
+# from pathlib import Path
 
 import click
-import numpy as np
 import pandas as pd
 
 from cancer_prediction_fy290.cancer_model import CancerModel
@@ -71,7 +70,7 @@ def train(data_file, output_model):
     click.echo(f"\nSaving model to {output_model}...")
     try:
         model.save(output_model)
-        click.echo(f"Model saved successfully")
+        click.echo("Model saved successfully")
     except Exception as e:
         click.echo(f"Error saving model: {e}", err=True)
         raise click.Abort()
