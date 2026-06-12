@@ -23,7 +23,6 @@ dev = [
 
 [project.scripts]
 cancer-prediction = "cancer_prediction_fy290.scripts.app:cli"
-train = "cancer_prediction_fy290.scripts.app:train"
 
 [build-system]
 requires = ["uv_build>=0.9.5,<0.10.0"]
