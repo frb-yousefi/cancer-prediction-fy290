@@ -188,7 +188,7 @@ wheels = [
 
 [[package]]
 name = "cancer-prediction-fy290"
-version = "0.1.2"
+version = "0.1.8"
 source = { editable = "." }
 dependencies = [
     { name = "click" },
