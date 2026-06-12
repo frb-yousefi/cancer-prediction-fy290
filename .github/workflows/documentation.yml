@@ -1,12 +1,15 @@
 name: documentation
+
 on:
   push:
     tags:
-      - 'v*'
+      - "v*"
+
+permissions:
+  contents: write
 
 jobs:
   build-docs:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
 
     steps:
@@ -16,12 +19,9 @@ jobs:
 
       - name: Verify tag is on master
         run: |
-          # Get the branch containing this tag
-          BRANCH=$(git branch -r --contains ${{ github.ref }} | grep 'master' || true)
-
-          # Check if the tag is on master
-          if [ -z "$BRANCH" ]; then
-            echo "Error: Tag must be created on master branch"
+          git fetch origin master
+          if ! git merge-base --is-ancestor ${{ github.sha }} origin/master; then
+            echo "Error: Tag must point to a commit on master branch"
             exit 1
           fi
 
@@ -30,13 +30,11 @@ jobs:
 
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
-          cache: 'uv'
+          python-version: "3.12"
+          cache: "uv"
 
       - name: Install dependencies with dev group
         run: uv sync --group dev
 
-      # Deploy docs
       - name: Deploy documentation
-        run: |
-          uv run mkdocs gh-deploy --force
+        run: uv run mkdocs gh-deploy --force
